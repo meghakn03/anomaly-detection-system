@@ -1,0 +1,8 @@
+
+    --- Data Stream Report ---
+    Total Data Points Processed: 120
+    Number of Anomalies Detected: 3
+    Percentage of Anomalies: 2.50%
+    Mean of Data Stream: 51.01
+    Standard Deviation of Data Stream: 11.90
+    
