@@ -40,3 +40,19 @@ def visualize_report(total_points, num_anomalies, anomaly_percentage, mean_value
 
     # Rotate x-axis labels for better readability
     ax.set_xticklabels(labels, rotation=15, ha='right', fontsize=10)  # Adjust rotation and font size
+
+def plot_benchmark_results(results, ax):
+    sizes, times = zip(*results)  # Unzip the results into sizes and times
+    ax.plot(sizes, times, marker='o', linestyle='-', color='b')
+    
+    ax.set_title("Benchmarking Results")
+    ax.set_xlabel("Data Size (Number of Points)")
+    ax.set_ylabel("Time Taken (seconds)")
+    ax.grid(True)
+
+    # Set x-ticks to be the data sizes
+    ax.set_xticks(sizes)  
+    ax.set_xticklabels(sizes, rotation=45, ha='right', fontsize=10)  # Rotate labels for better readability
+
+    # Optionally set a logarithmic scale if the size range is large
+    # ax.set_xscale('log')  # Uncomment if you want a logarithmic scale for the x-axis

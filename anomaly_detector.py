@@ -25,7 +25,7 @@ class AnomalyDetector:
         z_score = np.abs(data_point - mean) / std_dev if std_dev > 0 else 0
 
         # Debugging information
-        print(f"Data Point: {data_point}, Mean: {mean}, Std Dev: {std_dev}, Z-Score: {z_score}, Dynamic Threshold: {dynamic_threshold}")
+        # print(f"Data Point: {data_point}, Mean: {mean}, Std Dev: {std_dev}, Z-Score: {z_score}, Dynamic Threshold: {dynamic_threshold}")
 
         # Return whether the Z-score exceeds the multiplier
         return z_score > self.multiplier

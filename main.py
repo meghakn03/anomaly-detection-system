@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt  # Import plt here
 from anomaly_detector import AnomalyDetector
 from data_stream import generate_data_stream
-from visualization import plot_stream, visualize_report
+from visualization import plot_stream, visualize_report, plot_benchmark_results
 from utils import log_event, generate_report, flush_logs
 
 # Initialize AnomalyDetector with a rolling window of 30 points and a Z-score threshold of 3
@@ -45,14 +45,7 @@ def benchmark_anomaly_detection(data_sizes):
 
     return results  # Return results for plotting
 
-def plot_benchmark_results(results, ax):
-    sizes, times = zip(*results)  # Unzip the results into sizes and times
-    ax.plot(sizes, times, marker='o', linestyle='-', color='b')
-    ax.set_title("Benchmarking Results")
-    ax.set_xlabel("Data Size (Number of Points)")
-    ax.set_ylabel("Time Taken (seconds)")
-    ax.grid(True)
-    ax.set_xticks(sizes)  # Set x-ticks to be the data sizes
+
 
 def main():
     anomalies = []
