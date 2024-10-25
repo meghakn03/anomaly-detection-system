@@ -36,6 +36,12 @@ Real-time Stream Integration
 User Interface (UI)
 
 Performance Benchmarking
+achieved:
+- In our performance benchmarking, we focused on measuring the execution time of the anomaly detection algorithm using varying data sizes. 
+- We generated data streams with different sizes (100, 500, 1000, 5000, and 10000 points) to assess the algorithm's efficiency under increasing loads. 
+- For each data size, we recorded the time taken to process the data and detect anomalies, storing these results for analysis. 
+- We then plotted the benchmark results to visualize the relationship between data size and processing time, highlighting how execution time increased with larger data sets. 
+- This systematic approach allowed us to identify performance bottlenecks and evaluate the effectiveness of optimizations implemented in the anomaly detection process.
 
 Explanation and Documentation
 
