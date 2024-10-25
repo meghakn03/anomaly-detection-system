@@ -1,33 +1,31 @@
-from collections import deque
 import numpy as np
 
 class AnomalyDetector:
     def __init__(self, window_size=30, multiplier=2):
-        self.data_window = deque(maxlen=window_size)
-        self.multiplier = multiplier  # Multiplier for standard deviation
-        self.mean = None
-        self.std_dev = None
+        self.window_size = window_size
+        self.multiplier = multiplier
+        self.data_window = np.zeros(window_size)  # Pre-allocate window as a NumPy array
+        self.index = 0  # Track the position in the window
 
     def is_anomaly(self, data_point):
-        if len(self.data_window) < self.data_window.maxlen:
-            self.data_window.append(data_point)
-            return False  # No anomaly check until the window is full
+        # Add the new data point to the window
+        self.data_window[self.index % self.window_size] = data_point
+        self.index += 1
 
-        # Update the window with the new data point
-        self.data_window.append(data_point)
+        # If window is not full, no anomaly detection
+        if self.index < self.window_size:
+            return False
 
-        # Calculate mean and standard deviation
-        self.mean = np.mean(self.data_window)
-        self.std_dev = np.std(self.data_window)
+        # Calculate mean and standard deviation over the window
+        mean = np.mean(self.data_window)
+        std_dev = np.std(self.data_window)
 
-        # Calculate dynamic threshold
-        dynamic_threshold = self.mean + self.multiplier * self.std_dev
-
-        # Calculate Z-score
-        z_score = abs(data_point - self.mean) / self.std_dev if self.std_dev > 0 else 0
+        # Calculate Z-score and dynamic threshold
+        dynamic_threshold = mean + self.multiplier * std_dev
+        z_score = np.abs(data_point - mean) / std_dev if std_dev > 0 else 0
 
         # Debugging information
-        print(f"Data Point: {data_point}, Mean: {self.mean}, Std Dev: {self.std_dev}, Z-Score: {z_score}, Dynamic Threshold: {dynamic_threshold}")
+        print(f"Data Point: {data_point}, Mean: {mean}, Std Dev: {std_dev}, Z-Score: {z_score}, Dynamic Threshold: {dynamic_threshold}")
 
-        # Check if Z-score exceeds the dynamic threshold
+        # Return whether the Z-score exceeds the multiplier
         return z_score > self.multiplier
