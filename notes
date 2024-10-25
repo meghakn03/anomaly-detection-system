@@ -1,0 +1,11 @@
+Things to work on:
+
+work on concept drift and seasonal variations
+
+optimise by using vectorized operations with NumPy or consider different anomaly detection methodsthat are faster for large data streams
+
+work on documentation
+
+explain chosen algorithm
+
+add error handling
