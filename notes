@@ -22,6 +22,12 @@ add error handling
 
 additional implementations:
 Enhanced Reporting and Logging
+achieved:
+- We improved reporting and logging by implementing a structured logging system that captures key events and anomalies during data processing. 
+- Each log entry includes a timestamp, event type, and relevant message, making it easier to trace the flow of operations. 
+- Additionally, we enhanced the reporting functionality to generate a comprehensive summary of data stream analysis, including total points processed, anomalies detected, and statistical measures like mean and standard deviation. 
+- The report visualization was upgraded to display this information clearly in a bar chart format, with adjustments made to prevent overlapping labels for better readability. 
+- Overall, these enhancements provide clearer insights into the data stream and facilitate easier debugging and monitoring of the anomaly detection process.
 
 Algorithm Flexibility and Tuning
 

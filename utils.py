@@ -2,10 +2,15 @@ from datetime import datetime
 from report_visualization import visualize_report
 
 # Basic logger to write events to a log file
-def log_event(event_type, message):
+def log_event(event_type, message, batch=None):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    with open("stream_log.txt", "a") as log_file:
-        log_file.write(f"[{timestamp}] {event_type}: {message}\n")
+    log_entry = f"[{timestamp}] {event_type}: {message}\n"
+
+    if batch is not None:
+        batch.append(log_entry)  # Accumulate logs in the batch
+    else:
+        with open("stream_log.txt", "a") as log_file:
+            log_file.write(log_entry)
 
 # Function to generate a final report
 def generate_report(data, anomalies):
@@ -32,3 +37,7 @@ def generate_report(data, anomalies):
     
     # Return the values needed for plotting
     return total_points, num_anomalies, anomaly_percentage, mean_value, std_dev
+
+def flush_logs(batch):
+    with open("stream_log.txt", "a") as log_file:
+        log_file.writelines(batch)  # Write all accumulated logs
