@@ -3,8 +3,8 @@ from anomaly_detector import AnomalyDetector
 from data_stream import generate_data_stream
 from visualization import plot_stream
 
-# Initialize AnomalyDetector with a rolling window of 30 points and a Z-score threshold of 3
-detector = AnomalyDetector(window_size=30, threshold=3)
+# Initialize AnomalyDetector with a rolling window of 30 points and an initial Z-score threshold of 3
+detector = AnomalyDetector(window_size=30,  multiplier=2)
 
 # Process the data stream
 def main():
@@ -28,7 +28,7 @@ def main():
         f.write("\n".join(map(str, anomalies)))
 
     # Plot results after stream ends
-    plot_stream(anomalies, all_data)  # Pass both anomalies and all_data
+    plot_stream(all_data, anomalies)  # Pass both anomalies and all_data
 
 if __name__ == "__main__":
     main()

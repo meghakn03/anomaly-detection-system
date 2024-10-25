@@ -1,21 +1,20 @@
 import matplotlib.pyplot as plt
 
 def plot_stream(data, anomalies):
-    plt.ion()
+    plt.ion()  # Interactive mode on
     fig, ax = plt.subplots()
 
+    # Create a list of anomaly indices
     anomaly_indices = [i for i, point in enumerate(data) if point in anomalies]
-    
-    for i in range(len(data)):
-        ax.clear()
-        ax.plot(data[:i + 1], label="Data Stream", color='blue')
 
-        # Highlight anomalies
-        if i in anomaly_indices:
-            ax.plot(i, data[i], "ro", label="Anomaly", markersize=8)  # Increased marker size
+    # Plot all data points first
+    ax.plot(data, label="Data Stream", color='blue')
 
-        ax.legend()
-        plt.pause(0.05)
+    # Highlight anomalies
+    for idx in anomaly_indices:
+        ax.plot(idx, data[idx], "ro", markersize=8, label="Anomaly")  # Mark anomalies with red dots
 
-    plt.ioff()
+    ax.legend()
+    plt.pause(0.05)
+    plt.ioff()  # Interactive mode off
     plt.show()

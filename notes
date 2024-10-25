@@ -1,6 +1,11 @@
 Things to work on:
 
 work on concept drift and seasonal variations
+achieved:
+Seasonal variations are introduced through the sine wave and noise.
+Concept drift is achieved by adjusting the amplitude of the sine wave over time.
+Dynamic anomaly detection is handled by continuously recalculating the threshold based on the moving window of data points.
+
 
 optimise by using vectorized operations with NumPy or consider different anomaly detection methodsthat are faster for large data streams
 
