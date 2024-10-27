@@ -1,7 +1,9 @@
 Efficient Data Stream Anomaly Detection
+
 A project that detects anomalies in continuous data streams using a real-time Z-score-based detection algorithm. The project is designed to handle concept drift and seasonal variations, making it adaptable for real-world applications like financial transaction monitoring and system health tracking.
 
 Table of Contents
+
 Introduction
 Features
 Project Structure
