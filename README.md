@@ -5,6 +5,7 @@ A project that detects anomalies in continuous data streams using a real-time Z-
 Table of Contents
 
 Introduction
+
 Features
 Project Structure
 Setup
